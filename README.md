@@ -1,5 +1,10 @@
 # Notes on basic concepts of unix, shell, etc https://www.youtube.com/watch?v=U3iNcBtycaQ&list=PLUQy4zfrctjH-FsjpIZDZ0NBznvF4FdNP&index=1
 
+###### Episode 2: Files and Directories ######
+
+# Checks current user
+whoami
+
 # Shows us contents within current path
 ls
 
@@ -11,6 +16,8 @@ ls -F example
 
 # For absolute path from root
 ls -F /example
+
+###### Episode 3: Creating and Deleting ######
 
 # Relay current path
 pwd
@@ -68,6 +75,8 @@ cp quotes.text temp/quotations.txt
 # Copy with original name
 cp temp/quotes.text .
 
+###### Episode 4: Pipes and Filters ######
+
 # count words of all files with a particular filetype
 wc *.fileextension
 
@@ -93,4 +102,24 @@ sort lengths | head -1
 
 # we can also use pipe to remove the creation of the lengths file
 we -l *.fileextension | sort lengths | head -1
+
+# This programming model that takes a standard input and redirects the standard output to another process is called pipes and filters. It is encouraged to write Unix in pipes and filters for legibility and conciseness 
+
+###### Episode 5: Permissions ######
+
+# Who can see, change, run programs?
+# We can view the permissions using the -l flag
+ls -l
+
+# -rw-rw-r-- gives us information regarding user/group/everyone else and what they can do to the file
+
+# r is read, w is write, x is execute, - is off
+
+# the first character gives us file type, - for file, d for directory
+
+# the next 3 letters tells us user owner permissions
+
+# the next 3 gives group permissions, 
+
+# the last 3 is everyone else 
 
