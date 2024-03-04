@@ -1,4 +1,4 @@
-# Notes on basic concepts of unix, shell, etc https://www.youtube.com/watch?v=U3iNcBtycaQ&list=PLUQy4zfrctjH-FsjpIZDZ0NBznvF4FdNP&index=1
+Notes on basic concepts of unix, shell, etc https://www.youtube.com/watch?v=U3iNcBtycaQ&list=PLUQy4zfrctjH-FsjpIZDZ0NBznvF4FdNP&index=1
 
 # Episode 2: Files and Directories 
 
@@ -167,7 +167,9 @@ This programming model that takes a standard input and redirects the standard ou
 # Episode 5: Permissions 
 
 Who can see, change, run programs? 
-We can view the permissions using the ```
+We can view the permissions using the 
+
+```
 -l flag
 ls -l
 ```
