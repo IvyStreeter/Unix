@@ -123,3 +123,10 @@ ls -l
 
 # the last 3 is everyone else 
 
+# to see long form permissions for . and ..
+ls -a -l
+
+# execute for directory allows user to transverse the notes
+
+# to change permissions, change mode is used (chmod)
+
