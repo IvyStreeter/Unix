@@ -168,24 +168,103 @@ This programming model that takes a standard input and redirects the standard ou
 
 # Episode 5: Permissions 
 
-Who can see, change, run programs? 
+Computers have users, groups, and all as different categories of things that can read, write, or excute a file.
+
+How can we view executable files? Files with a * will be executable.
+```
+ls -F
+```
+
+Who can see, change, or run programs? 
 We can view the permissions using the -l flag
 ```
 ls -l
 ```
-
+* The list is written in this order: file permissions (read, write, or execute), 1 (not discussed), name of the user that owns the file, id of the group that owns the file, size in bytes ,times the file was last modified, name of the file
 * -rw-rw-r-- gives us information regarding user/group/everyone else and what they can do to the file
 * r is read, w is write, x is execute, - is off
+
 * the first character gives us file type, - for file, d for directory
 * the next 3 letters tells us user owner permissions
-* the next 3 gives group permissions, 
+* the next 3 gives group permissions
 * the last 3 is everyone else 
 * to see long form permissions for . and ..
 ```
 ls -a -l
 ```
+* The directory and it's parent start with a d.
 
-execute for directory allows user to transverse the notes
+You may see an x for a directory, what does this mean?
+execute for directory allows user to transverse the directory, but not look at the contents.
 
 to change permissions, change mode is used (chmod)
+let's change the user to only read and write
+```
+chmod u=rw file.grd
+```
 
+let's change the group to only r
+we can place 2 commands together as long as they are separated with a ;
+```
+chmod g=r; ls -l file.grd
+```
+
+let's change everyone else to have no permissions
+```
+chmod a= file.grd; ls -l file.grd
+```
+
+Windows is different from Unix
+Windows permissions is defined by Acess Control Lists (ACLs)
+An ACL is a list of pairs (who, what)
+You can give userA permission append data to a file without read/delete
+You can give userB permission to delete files without being able to append/read
+This is more flexible, but harder to read/understand
+
+## Creating our own commands 
+this appends cat to the file smallest
+```
+cat > smallest
+```
+
+This pipe finds the smallest file, using Ctrl-D means end of input on Unix. Similarly, Ctrl-Z does the same in Windows
+```
+wc -l *.pdb | sort | head -1
+^D 
+```
+
+To run the program, first lets add execute to user to this file (without changing anything else)
+(alternatively, - can be used to subtract permissions)
+```
+chmod u+x smallest
+```
+
+Now we can run this file, but only in the current working directory.
+```
+./smallest
+```
+
+# Episode 6: find things in files and themselves
+
+grep: global/regular expression/print
+grep finds and prints lines in a file that match a pattern
+
+This will return lines containing the word 'not'
+```
+grep not file.txt
+```
+
+This creates a word boundary so that only lines with the word day are printed.
+```
+grep -w day file.txt
+```
+
+This numbers the lines that match the search
+```
+grep -n it file.txt
+```
+
+Combine the commands
+```
+grep -w -n it file.txt
+```
